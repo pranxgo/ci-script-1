@@ -6,6 +6,16 @@ cd /tmp/rom
 
 SECONDS=0
 
+if [[ $git_cookies != 0 ]]; then
+
+sudo touch /etc/mtab
+sudo chmod 777 /etc/mtab
+
+echo "$git_cookies" > ~/git_cookies.sh
+bash ~/git_cookies.sh
+
+fi
+
 # Sync source
 repo init --depth=1 --no-repo-verify -u https://github.com/ROM/android_manifest -b 10 -g default,-mips,-darwin,-notdefault
 
