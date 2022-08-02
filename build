@@ -20,7 +20,7 @@ sync_time
 
 # compile plox
 case "$build_type" in
-		 V|v) # Lets Make Vendor / System
+		 V|v|C|c) # Lets Make Vendor / System
 		 SECONDS=0
 		 make vendorimage -j$(nproc --all)
 		 vendor_time=$(($SECONDS / 60))

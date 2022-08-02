@@ -137,7 +137,7 @@ cd /tmp/ci
 git show -s --format=%s | awk 'NF>1{print $NF}' > /tmp/last_value.txt # store last value from commit name
 last_value="`cat /tmp/last_value.txt`" # store last value
 case "$last_value" in
-		 S|s|R|r)
+		 S|s|R|r|C|c)
 		 build_type=$last_value
 		 ;;
 		 *) # Lets make vendor as haven't stored any value in commit name

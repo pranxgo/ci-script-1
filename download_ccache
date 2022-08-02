@@ -37,6 +37,11 @@ else
 tg "Skipping CCACHE Download on 1st build..!"
 fi
 
+case "$build_type" in
+		 C|c)
+rm -rf *.tar.gz
+esac
+
 # Extract ccache so ci can use it
 echo "• Extracting CCACHE •"
 if [ -e *.tar.gz ]; then

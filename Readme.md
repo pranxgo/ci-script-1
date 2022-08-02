@@ -68,6 +68,10 @@
 ````bash
 git commit -m "ci: Lets Build rom_name android_verison"
 ````
+• Delete Cache to clean build a rom
+````bash
+git commit -m "your msg | C"
+````
 • If you want to compile same rom again after a successful build use
 ````bash
 git commit -m "your msg | R"
