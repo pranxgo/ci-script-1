@@ -27,7 +27,7 @@ esac
 cd /tmp # Where to download cccahe
 
 echo "• Downloading CCACHE •"
-down https://emy.ehteshammalik4.workers.dev/$device_codename/$rom_name/$branch_name/ccache.tar.gz || down https://emy.ehteshammalik4.workers.dev/$device_codename/$rom_name/$branch_name/ccache.tar.gz
+down https://emy.ehteshammalik4.workers.dev/cirrus-user/$CIRRUS_REPO_OWNER/$device_codename/$rom_name/$branch_name/ccache.tar.gz || down https://emy.ehteshammalik4.workers.dev/cirrus-user/$CIRRUS_REPO_OWNER/$device_codename/$rom_name/$branch_name/ccache.tar.gz
 if [ -e *.tar.gz ]; then
 tg "$rom_name ccache downloaded successfully!
 Total Size: $(ls -sh ${PWD}/ccache.tar.gz | cut -d - -f 1 | cut -d / -f 1)
