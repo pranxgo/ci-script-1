@@ -17,6 +17,19 @@ ccache -z
 
 # check how much time sync took
 sync_time
+max_sync_time=15
+
+case "$build_type" in
+		 R|r)
+if [[ $sync_time -ge $max_sync_time ]]; then
+# Restart build as we dont have enough time to compile rom
+git clone -b $CIRRUS_BRANCH $github_repo $rom_name && cd $rom_name
+git commit -sm "NOT ENOUGH TIME TO COMPILE ROM | R" --allow-empty
+git push -f
+tg "Restart, Not enough time to compile rom"
+exit 1
+fi
+esac
 
 # compile plox
 case "$build_type" in
