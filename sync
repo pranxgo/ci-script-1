@@ -17,15 +17,23 @@ bash ~/git_cookies.sh
 fi
 
 # Sync source
-repo init --depth=1 --no-repo-verify -u https://github.com/ROM/android_manifest -b 10 -g default,-mips,-darwin,-notdefault
+repo init --depth=1 --no-repo-verify -u https://github.com/xdroid-oss/xd_manifest -b thirteen -g default,-mips,-darwin,-notdefault
 
 # Sync source without unnecessary messages, try with -j30 first, if fails, it will try again
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 
 # local manifest
-git clone --depth=1 https://github.com/$CIRRUS_REPO_OWNER/device_xiaomi_lavender -b x device/xiaomi/lavender
-git clone --depth=1 https://github.com/$CIRRUS_REPO_OWNER/vendor_xiaomi_lavender -b x vendor/xiaomi/lavender
-git clone --depth=1 https://github.com/$CIRRUS_REPO_OWNER/kernel_xiaomi_lavender -b x kernel/xiaomi/lavender
+git clone --depth=1 https://github.com/datnerdguy/device_xiaomi_whyred -b xdroid-13 device/xiaomi/whyred
+git clone --depth=1 https://github.com/datnerdguy/vendor_xiaomi_whyred -b thirteen-4.19 vendor/xiaomi/whyred
+git clone --depth=1 https://github.com/datnerdguy/kernel_xiaomi_whyred -b sapphire kernel/xiaomi/whyred
+
+rm -rf hardware/qcom-caf/msm8998/display
+rm -rf hardware/qcom-caf/msm8998/audio
+rm -rf hardware/qcom-caf/msm8998/media
+
+git clone --depth=1 https://github.com/datnerdguy/android_hardware_qcom_audio hardware/qcom-caf/msm8998/audio
+git clone --depth=1 https://github.com/datnerdguy/android_hardware_qcom_display hardware/qcom-caf/msm8998/display
+git clone --depth=1 https://github.com/edwinmoq/android_hardware_qcom_media -b sdm660-4.19 hardware/qcom-caf/msm8998/media
 
 tg "$rom_name source sync completed!
 Total Size: $(du -sh /tmp/rom | cut -d - -f 1 | cut -d / -f 1)
