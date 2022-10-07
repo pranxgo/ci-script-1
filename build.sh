@@ -1,10 +1,10 @@
 # Normal build steps
 . build/envsetup.sh
-lunch rom_lavender-userdebug
+lunch xdroid_whyred-user
 
 # export variable here
 export TZ=Asia/Kolkata
 
 compile_plox () {
-make bacon -j$(nproc --all)
+make xd -j$(nproc --all)
 }
